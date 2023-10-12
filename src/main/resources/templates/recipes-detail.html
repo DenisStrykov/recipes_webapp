@@ -29,7 +29,7 @@
                         <div class="small text-muted" th:text="${recipe.createdDateTime}"></div>
                         <h2 class="card-title">Про этот рецепт</h2>
                         <p class="card-text" th:text="${recipe.recipeContent}"></p>
-                        <a class="btn btn-primary">Удалить</a>
+                        <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/delete(recipeId=${recipe.id})}">Удалить</a>
                     </div>
                 </div>
                 <!-- Nested row for non-featured blog posts-->
