@@ -1,0 +1,54 @@
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Редактировать рецепт</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <!-- Page Content-->
+    <section layout:fragment="body" class="py-5">
+        <div class="container">
+            <form class="row g-3" role="form" method="post" th:action="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}" th:object="${recipe}">
+                <input type="hidden" th:field="*{id}">
+                <div class="col-md-6">
+                    <label for="recipeTitle" class="form-label">Название</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="recipeTitle"
+                            name="recipeTitle"
+                            th:field="*{recipeTitle}"
+                            placeholder="Цезарь">
+                </div>
+                <div class="col-md-6">
+                    <label for="photoUrl" class="form-label">URL фото</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="photoUrl"
+                            name="photoUrl"
+                            th:field="*{photoUrl}"
+                            placeholder="https://lobsterhouse.ru/wp-content/uploads/f/b/2/fb29dff5b815ec45fb7d212ee5f10bbc.jpeg">
+                </div>
+                <div class="input-group mb-3">
+                    <span  class="input-group-text">Рецепт</span>
+                    <textarea
+                            type="text"
+                            class="form-control"
+                            id="recipeContent"
+                            name="recipeContent"
+                            th:field="*{recipeContent}"
+                            aria-label="Рецепт"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Создать</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
