@@ -33,6 +33,13 @@ public class RecipeController {
         return "recipes-list";
     }
 
+    @GetMapping("/recipes/{recipesId}")
+    public String recipeDetail(@PathVariable("recipesId") Long recipeId, Model model) {
+        RecipeDto recipeDto = recipeService.findRecipeById(recipeId);
+        model.addAttribute("recipe", recipeDto);
+        return "recipes-detail";
+    }
+
     @GetMapping("/recipes/new")
     public String createRecipe(Model model) {
         Recipe recipe = new Recipe();
