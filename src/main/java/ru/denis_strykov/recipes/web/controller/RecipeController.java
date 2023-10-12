@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.denis_strykov.recipes.web.dto.RecipeDto;
 import ru.denis_strykov.recipes.web.models.Recipe;
 import ru.denis_strykov.recipes.web.service.RecipeService;
@@ -51,6 +48,13 @@ public class RecipeController {
     public String deleteRecipe(@PathVariable("recipeId") Long recipeId) {
         recipeService.delete(recipeId);
         return "redirect:/recipes";
+    }
+
+    @GetMapping("/recipes/search")
+    public String searchRecipe(@RequestParam(value = "query") String query, Model model) {
+        List<RecipeDto> recipes = recipeService.searchRecipes(query);
+        model.addAttribute("recipes", recipes);
+        return "recipes-list";
     }
 
     @PostMapping("/recipes/new")

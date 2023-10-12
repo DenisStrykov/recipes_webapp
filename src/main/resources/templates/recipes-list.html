@@ -15,6 +15,11 @@
                 <p class="lead fw-normal text-muted mb-0">Приготовь шедевр самостоятельно</p>
             </div>
             <div class="row gx-5">
+                <div>
+                    <form th:action="@{/recipes/search}" class="form-inline my-2 my-lg-0 mb-3">
+                        <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Найти рецепт" aria-label="Найти">
+                    </form>
+                </div>
                 <div th:each="recipe :${recipes}" class="col-lg-6 mb-2">
                     <div class="position-relative mb-3">
                         <img class="img-fluid rounded-3 mb-3" th:src="${recipe.photoUrl}"
