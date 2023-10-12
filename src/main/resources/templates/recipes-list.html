@@ -3,6 +3,8 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layout}">
 <head>
+    <title>Рецепты</title>
+</head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
     <!-- Page Content-->
@@ -13,17 +15,17 @@
                 <p class="lead fw-normal text-muted mb-0">Приготовь шедевр самостоятельно</p>
             </div>
             <div class="row gx-5">
-                <div th:each="recip :${recipes}" class="col-lg-6">
-                    <div class="position-relative mb-5">
-                        <img class="img-fluid rounded-3 mb-3" th:src="${recip.photoUrl}"
+                <div th:each="recipe :${recipes}" class="col-lg-6 mb-2">
+                    <div class="position-relative mb-3">
+                        <img class="img-fluid rounded-3 mb-3" th:src="${recipe.photoUrl}"
                              alt="..."/>
-                        <a th:text="${recip.recipeTitle}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+                        <a th:text="${recipe.recipeTitle}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
+                    <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}">Редактировать</a>
                 </div>
             </div>
         </div>
     </section>
 </main>
-
 </body>
 </html>

@@ -27,6 +27,36 @@ public class RecipeServiceImpl implements RecipeService {
         return recipes.stream().map((recipe) -> mapToRecipeDto(recipe)).collect(Collectors.toList());
     }
 
+    @Override
+    public Recipe saveRecipe(Recipe recipe) {
+        return recipeRepository.save(recipe);
+    }
+
+    @Override
+    public RecipeDto findRecipeById(Long recipeId) {
+        Recipe recipe = recipeRepository.findById(recipeId).get();
+        return mapToRecipeDto(recipe);
+    }
+
+    @Override
+    public void updateRecipe(RecipeDto recipeDto) {
+        Recipe recipe = mapToRecipe(recipeDto);
+        recipeRepository.save(recipe);
+    }
+
+    private Recipe mapToRecipe(RecipeDto recipe) {
+        Recipe recipeDto = Recipe.builder()
+                .id(recipe.getId())
+                .recipeTitle(recipe.getRecipeTitle())
+                .photoUrl(recipe.getPhotoUrl())
+                .recipeContent(recipe.getRecipeContent())
+                .createdDateTime(recipe.getCreatedDateTime())
+                .updateDateTime(recipe.getUpdateDateTime())
+                .build();
+        return recipeDto;
+    }
+
+
     private RecipeDto mapToRecipeDto(Recipe recipe) {
         RecipeDto recipeDto = RecipeDto.builder()
                 .id(recipe.getId())
