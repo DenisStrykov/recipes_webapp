@@ -47,12 +47,18 @@ public class RecipeController {
         return "recipes-create";
     }
 
+    @GetMapping("/recipes/{recipeId}/delete")
+    public String deleteRecipe(@PathVariable("recipeId") Long recipeId) {
+        recipeService.delete(recipeId);
+        return "redirect:/recipes";
+    }
+
     @PostMapping("/recipes/new")
     public String saveRecipe(@Valid @ModelAttribute("recipe") RecipeDto recipeDto, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("recipe", recipeDto);
-            return "recipes-create";
-        }
+//        if (result.hasErrors()) {
+//            model.addAttribute("recipe", recipeDto);
+//            return "recipes-create";
+//        }
         recipeService.saveRecipe(recipeDto);
         return "redirect:/recipes";
     }
