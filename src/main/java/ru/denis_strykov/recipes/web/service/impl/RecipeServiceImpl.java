@@ -1,5 +1,7 @@
 package ru.denis_strykov.recipes.web.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.denis_strykov.recipes.web.dto.RecipeDto;
 import ru.denis_strykov.recipes.web.models.Recipe;
 import ru.denis_strykov.recipes.web.repository.RecipeRepository;
@@ -8,12 +10,14 @@ import ru.denis_strykov.recipes.web.service.RecipeService;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RecipeImpl implements RecipeService {
+@Service
+public class RecipeServiceImpl implements RecipeService {
 
 
     private RecipeRepository recipeRepository;
 
-    public RecipeImpl(RecipeRepository recipeRepository) {
+    @Autowired
+    public RecipeServiceImpl(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
