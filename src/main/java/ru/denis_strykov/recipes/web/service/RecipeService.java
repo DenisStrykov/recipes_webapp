@@ -9,7 +9,7 @@ import java.util.List;
 public interface RecipeService {
 
     List<RecipeDto> findAllRecipe();
-    Recipe saveRecipe(Recipe recipe);
+    Recipe saveRecipe(RecipeDto recipeDto);
     RecipeDto findRecipeById(Long recipeId);
     void updateRecipe(RecipeDto recipe);
 }

@@ -1,9 +1,11 @@
 package ru.denis_strykov.recipes.web.controller;
 
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +33,13 @@ public class RecipeController {
         return "recipes-list";
     }
 
+    @GetMapping("/recipes/{recipesId}")
+    public String recipeDetail(@PathVariable("recipesId") Long recipeId, Model model) {
+        RecipeDto recipeDto = recipeService.findRecipeById(recipeId);
+        model.addAttribute("recipe", recipeDto);
+        return "recipes-detail";
+    }
+
     @GetMapping("/recipes/new")
     public String createRecipe(Model model) {
         Recipe recipe = new Recipe();
@@ -39,8 +48,12 @@ public class RecipeController {
     }
 
     @PostMapping("/recipes/new")
-    public String saveRecipe(@ModelAttribute("recipe") Recipe recipe) {
-        recipeService.saveRecipe(recipe);
+    public String saveRecipe(@Valid @ModelAttribute("recipe") RecipeDto recipeDto, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("recipe", recipeDto);
+            return "recipes-create";
+        }
+        recipeService.saveRecipe(recipeDto);
         return "redirect:/recipes";
     }
 
@@ -52,7 +65,12 @@ public class RecipeController {
     }
 
     @PostMapping("/recipes/{recipeId}/edit")
-    public String updateRecipe(@PathVariable("recipeId") Long recipeId, @ModelAttribute("recipe") RecipeDto recipe) {
+    public String updateRecipe(@PathVariable("recipeId") Long recipeId
+            , @Valid @ModelAttribute("recipe") RecipeDto recipe
+            , BindingResult result) {
+        if (result.hasErrors()) {
+            return "recipes-edit";
+        }
         recipe.setId(recipeId);
         recipeService.updateRecipe(recipe);
         return "redirect:/recipes";

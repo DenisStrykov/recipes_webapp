@@ -28,7 +28,8 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe saveRecipe(Recipe recipe) {
+    public Recipe saveRecipe(RecipeDto recipeDto) {
+        Recipe recipe = mapToRecipe(recipeDto);
         return recipeRepository.save(recipe);
     }
 

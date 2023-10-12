@@ -20,6 +20,7 @@
                             name="recipeTitle"
                             th:field="*{recipeTitle}"
                             placeholder="Цезарь">
+                    <p th:if="${#fields.hasErrors('recipeTitle')}" class="text-danger" th:errors="*{recipeTitle}"></p>
                 </div>
                 <div class="col-md-6">
                     <label for="photoUrl" class="form-label">URL фото</label>
@@ -30,6 +31,7 @@
                             name="photoUrl"
                             th:field="*{photoUrl}"
                             placeholder="https://lobsterhouse.ru/wp-content/uploads/f/b/2/fb29dff5b815ec45fb7d212ee5f10bbc.jpeg">
+                    <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
                 </div>
                 <div class="input-group mb-3">
                     <span  class="input-group-text">Рецепт</span>
@@ -40,6 +42,7 @@
                             name="recipeContent"
                             th:field="*{recipeContent}"
                             aria-label="Рецепт"></textarea>
+                    <p th:if="${#fields.hasErrors('recipeContent')}" class="text-danger" th:errors="*{recipeContent}"></p>
                 </div>
 
                 <div class="col-12">
