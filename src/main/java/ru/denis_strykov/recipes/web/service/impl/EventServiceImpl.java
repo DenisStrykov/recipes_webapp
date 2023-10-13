@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import static ru.denis_strykov.recipes.web.mapper.EventMapper.mapToEvent;
 import static ru.denis_strykov.recipes.web.mapper.EventMapper.mapToEventDto;
+import static ru.denis_strykov.recipes.web.mapper.RecipeMapper.mapToRecipe;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -45,6 +46,12 @@ public class EventServiceImpl implements EventService {
     public EventDto findByEventId(Long eventId) {
         Event event = eventRepository.findById(eventId).get();
         return mapToEventDto(event);
+    }
+
+    @Override
+    public void updateEvent(EventDto eventDto) {
+        Event event = mapToEvent(eventDto);
+        eventRepository.save(event);
     }
 
 

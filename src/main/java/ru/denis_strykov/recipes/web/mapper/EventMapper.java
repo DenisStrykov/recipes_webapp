@@ -13,6 +13,7 @@ public class EventMapper {
                 .location(eventDto.getLocation())
                 .tradition(eventDto.getTradition())
                 .date(eventDto.getDate())
+                .recipe(eventDto.getRecipe())
                 .build();
     }
 
@@ -24,6 +25,7 @@ public class EventMapper {
                 .location(event.getLocation())
                 .tradition(event.getTradition())
                 .date(event.getDate())
+                .recipe(event.getRecipe())
                 .build();
     }
 

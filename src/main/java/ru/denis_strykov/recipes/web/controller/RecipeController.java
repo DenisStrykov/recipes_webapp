@@ -77,8 +77,9 @@ public class RecipeController {
     @PostMapping("/recipes/{recipeId}/edit")
     public String updateRecipe(@PathVariable("recipeId") Long recipeId
             , @Valid @ModelAttribute("recipe") RecipeDto recipe
-            , BindingResult result) {
+            , BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("recipe", recipe);
             return "recipes-edit";
         }
         recipe.setId(recipeId);

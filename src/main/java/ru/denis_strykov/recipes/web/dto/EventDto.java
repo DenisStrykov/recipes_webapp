@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.denis_strykov.recipes.web.models.Recipe;
 
 import java.util.Calendar;
 
@@ -20,5 +21,6 @@ public class EventDto {
     private String location;
     private String tradition;
     private String date;
+    private Recipe recipe;
 
 }
