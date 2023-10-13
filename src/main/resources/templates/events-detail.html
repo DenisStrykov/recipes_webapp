@@ -30,7 +30,9 @@
                         <div class="small text-muted" th:text="${event.location}"></div>
                         <div class="small text-muted" th:text="${event.date}"></div>
                         <p class="card-text" th:text="${event.tradition}"></p>
-                        <a class="btn btn-primary" th:href="@{/events/{eventId}/delete(eventId=${event.id})}">Удалить</a>
+                        <div th:if="${user.id} == ${event.recipe.createdBy.id}">
+                            <a class="btn btn-primary" th:href="@{/events/{eventId}/delete(eventId=${event.id})}">Удалить</a>
+                        </div>
                     </div>
                 </div>
             </div>

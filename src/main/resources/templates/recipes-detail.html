@@ -29,8 +29,10 @@
                         <div class="small text-muted" th:text="${recipe.createdDateTime}"></div>
                         <h2 class="card-title">Про этот рецепт</h2>
                         <p class="card-text" th:text="${recipe.recipeContent}"></p>
-                        <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/delete(recipeId=${recipe.id})}">Удалить</a>
-                        <a class="btn btn-primary" th:href="@{/events/{recipeId}/new(recipeId=${recipe.id})}">Создать событие</a>
+                        <div th:if="${user.id} == ${recipe.createdBy.id}">
+                            <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/delete(recipeId=${recipe.id})}">Удалить</a>
+                            <a class="btn btn-primary" th:href="@{/events/{recipeId}/new(recipeId=${recipe.id})}">Создать событие</a>
+                        </div>
                     </div>
                 </div>
                 <!-- Nested row for non-featured blog posts-->
@@ -45,7 +47,8 @@
                                 <h2 th:text="${event.name}" class="card-title h4"></h2>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                     Reiciendis aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" th:href="@{/events/{eventId}(eventId=${event.id})}">Подробнее →</a>
+                                <a class="btn btn-primary" th:href="@{/events/{eventId}(eventId=${event.id})}">Подробнее
+                                    →</a>
                             </div>
                         </div>
                         <!-- Blog post-->

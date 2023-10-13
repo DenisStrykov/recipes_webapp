@@ -34,6 +34,10 @@ public class Recipe {
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
 
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private UserEntity createdBy;
+
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.REMOVE)
     private List<Event> events = new ArrayList<>();
 

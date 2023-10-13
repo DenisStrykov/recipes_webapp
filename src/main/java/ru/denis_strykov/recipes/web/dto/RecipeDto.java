@@ -4,6 +4,7 @@ package ru.denis_strykov.recipes.web.dto;
 import javax.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
+import ru.denis_strykov.recipes.web.models.UserEntity;
 
 
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class RecipeDto {
     private String photoUrl;
     @NotEmpty(message = "Рецепт не должен быть пустым")
     private String recipeContent;
+    private UserEntity createdBy;
     private LocalDateTime createdDateTime;
     private LocalDateTime updateDateTime;
     private List<EventDto> events;

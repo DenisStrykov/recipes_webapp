@@ -15,6 +15,7 @@ public class RecipeMapper {
                 .recipeTitle(recipe.getRecipeTitle())
                 .photoUrl(recipe.getPhotoUrl())
                 .recipeContent(recipe.getRecipeContent())
+                .createdBy(recipe.getCreatedBy())
                 .createdDateTime(recipe.getCreatedDateTime())
                 .updateDateTime(recipe.getUpdateDateTime())
                 .build();
@@ -28,6 +29,7 @@ public class RecipeMapper {
                 .recipeTitle(recipe.getRecipeTitle())
                 .photoUrl(recipe.getPhotoUrl())
                 .recipeContent(recipe.getRecipeContent())
+                .createdBy(recipe.getCreatedBy())
                 .createdDateTime(recipe.getCreatedDateTime())
                 .updateDateTime(recipe.getUpdateDateTime())
                 .events(recipe.getEvents().stream().map((event) -> mapToEventDto(event)).collect(Collectors.toList()))

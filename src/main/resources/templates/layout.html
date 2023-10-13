@@ -20,24 +20,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/recipes}">Домой</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{recipes/new}">Создать рецепт</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/recipes/new}">Создать рецепт</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/events}">Традиции блюда</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Каталог</a></li>
-                <li class="nav-item dropdown">
+                <li sec:authorize="!isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/login}">Войти</a></li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/register}">Регистрация</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">Учетная запись</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" th:href="@{/login}">Войти</a></li>
-                        <li><a class="dropdown-item" th:href="@{/register}">Регистрация</a></li>
+                        <li><a class="dropdown-item" th:href="@{/recipes/new}">Создать рецепт</a></li>
                         <li><a class="dropdown-item" th:href="@{/logout}">Выход</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                        <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                        <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
                     </ul>
                 </li>
             </ul>
