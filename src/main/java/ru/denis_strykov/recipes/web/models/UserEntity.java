@@ -1,7 +1,7 @@
 package ru.denis_strykov.recipes.web.models;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

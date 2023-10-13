@@ -1,7 +1,7 @@
 package ru.denis_strykov.recipes.web.controller;
 
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,10 +21,10 @@ public class AuthController {
         this.userService = userService;
     }
 
-//    @GetMapping("/login")
-//    public String loginPage(){
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
 
     @GetMapping("/register")
     public String getRegisterForm(Model model) {

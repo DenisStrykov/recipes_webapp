@@ -1,7 +1,7 @@
 package ru.denis_strykov.recipes.web.dto;
 
 
-import jakarta.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
 
