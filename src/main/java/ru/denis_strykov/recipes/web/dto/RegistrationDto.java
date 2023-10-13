@@ -1,7 +1,7 @@
 package ru.denis_strykov.recipes.web.dto;
 
 
-import jakarta.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
@@ -9,7 +9,7 @@ public class RegistrationDto {
 
     private Long id;
     @NotEmpty
-    private String userName;
+    private String username;
     @NotEmpty
     private String email;
     @NotEmpty
