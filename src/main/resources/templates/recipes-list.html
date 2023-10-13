@@ -10,6 +10,8 @@
     <!-- Page Content-->
     <section layout:fragment="body" class="py-5">
         <div class="container px-5 my-5">
+            <div th:if="${param.success}" class="alert alert-success">
+                Регистрация прошла успешно!</div>
             <div class="text-center mb-5">
                 <h1 class="fw-bolder">Мы говорим на языке хорошей еды</h1>
                 <p class="lead fw-normal text-muted mb-0">Приготовь шедевр самостоятельно</p>
