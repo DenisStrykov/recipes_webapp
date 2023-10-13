@@ -13,6 +13,8 @@ import ru.denis_strykov.recipes.web.dto.EventDto;
 import ru.denis_strykov.recipes.web.models.Event;
 import ru.denis_strykov.recipes.web.service.EventService;
 
+import java.util.List;
+
 @Controller
 public class EventController {
 
@@ -21,6 +23,20 @@ public class EventController {
     @Autowired
     public EventController(EventService eventService) {
         this.eventService = eventService;
+    }
+
+    @GetMapping("/events")
+    public String eventList(Model model) {
+        List<EventDto> events = eventService.findAllEvents();
+        model.addAttribute("events", events);
+        return "events-list";
+    }
+
+    @GetMapping("/events/{eventId}")
+    public String viewEvent(@PathVariable("eventId") Long eventId, Model model) {
+        EventDto eventDto = eventService.findByEventId(eventId);
+        model.addAttribute("event", eventDto);
+        return "events-detail";
     }
 
     @GetMapping("/events/{recipeId}/new")

@@ -7,6 +7,7 @@ import lombok.Data;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -21,5 +22,6 @@ public class RecipeDto {
     private String recipeContent;
     private LocalDateTime createdDateTime;
     private LocalDateTime updateDateTime;
+    private List<EventDto> events;
 
 }
