@@ -50,6 +50,12 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepository.deleteById(recipeId);
     }
 
+    @Override
+    public List<RecipeDto> searchRecipes(String query) {
+        List<Recipe> recipes = recipeRepository.searchRecipes(query);
+        return recipes.stream().map(recipe -> mapToRecipeDto(recipe)).collect(Collectors.toList());
+    }
+
     private Recipe mapToRecipe(RecipeDto recipe) {
         Recipe recipeDto = Recipe.builder()
                 .id(recipe.getId())
