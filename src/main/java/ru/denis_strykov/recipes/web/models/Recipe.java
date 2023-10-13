@@ -10,6 +10,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -29,5 +31,8 @@ public class Recipe {
     private LocalDateTime createdDateTime;
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
+
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.REMOVE)
+    private Set<Event> events = new HashSet<>();
 
 }
