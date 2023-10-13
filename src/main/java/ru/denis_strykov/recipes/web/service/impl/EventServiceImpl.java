@@ -9,6 +9,13 @@ import ru.denis_strykov.recipes.web.repository.EventRepository;
 import ru.denis_strykov.recipes.web.repository.RecipeRepository;
 import ru.denis_strykov.recipes.web.service.EventService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static ru.denis_strykov.recipes.web.mapper.EventMapper.mapToEvent;
+import static ru.denis_strykov.recipes.web.mapper.EventMapper.mapToEventDto;
+import static ru.denis_strykov.recipes.web.mapper.RecipeMapper.mapToRecipe;
+
 @Service
 public class EventServiceImpl implements EventService {
 
@@ -29,15 +36,28 @@ public class EventServiceImpl implements EventService {
         eventRepository.save(event);
     }
 
-    private Event mapToEvent(EventDto eventDto) {
-        return Event.builder()
-                .id(eventDto.getId())
-                .name(eventDto.getName())
-                .photoUrl(eventDto.getPhotoUrl())
-                .location(eventDto.getLocation())
-                .tradition(eventDto.getTradition())
-                .date(eventDto.getDate())
-                .build();
+    @Override
+    public List<EventDto> findAllEvents() {
+        List<Event> events = eventRepository.findAll();
+        return events.stream().map(event -> mapToEventDto(event)).collect(Collectors.toList());
     }
+
+    @Override
+    public EventDto findByEventId(Long eventId) {
+        Event event = eventRepository.findById(eventId).get();
+        return mapToEventDto(event);
+    }
+
+    @Override
+    public void updateEvent(EventDto eventDto) {
+        Event event = mapToEvent(eventDto);
+        eventRepository.save(event);
+    }
+
+    @Override
+    public void deleteEvent(Long eventId) {
+        eventRepository.deleteById(eventId);
+    }
+
 
 }
