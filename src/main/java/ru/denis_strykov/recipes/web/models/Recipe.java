@@ -28,6 +28,7 @@ public class Recipe {
     private long id;
     private String recipeTitle;
     private String photoUrl;
+    @Column(length = 7500)
     private String recipeContent;
     @CreationTimestamp
     private LocalDateTime createdDateTime;

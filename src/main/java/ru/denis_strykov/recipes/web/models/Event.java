@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Calendar;
 
@@ -22,6 +23,7 @@ public class Event {
     private String name;
     private String photoUrl;
     private String location;
+    @Column(length = 7500)
     private String tradition;
     private String date;
 
