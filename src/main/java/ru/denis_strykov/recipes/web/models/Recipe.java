@@ -28,11 +28,16 @@ public class Recipe {
     private long id;
     private String recipeTitle;
     private String photoUrl;
+    @Column(length = 7500)
     private String recipeContent;
     @CreationTimestamp
     private LocalDateTime createdDateTime;
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
+
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private UserEntity createdBy;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.REMOVE)
     private List<Event> events = new ArrayList<>();

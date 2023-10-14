@@ -14,7 +14,10 @@ import org.w3c.dom.Node;
 import ru.denis_strykov.recipes.web.dto.EventDto;
 import ru.denis_strykov.recipes.web.dto.RecipeDto;
 import ru.denis_strykov.recipes.web.models.Event;
+import ru.denis_strykov.recipes.web.models.UserEntity;
+import ru.denis_strykov.recipes.web.security.SecurityUtil;
 import ru.denis_strykov.recipes.web.service.EventService;
+import ru.denis_strykov.recipes.web.service.UserService;
 
 import java.util.List;
 
@@ -22,22 +25,39 @@ import java.util.List;
 public class EventController {
 
     private EventService eventService;
+    private UserService userService;
 
     @Autowired
-    public EventController(EventService eventService) {
+    public EventController(EventService eventService, UserService userService) {
         this.eventService = eventService;
+        this.userService = userService;
     }
 
     @GetMapping("/events")
     public String eventList(Model model) {
+        UserEntity user = new UserEntity();
         List<EventDto> events = eventService.findAllEvents();
+        String username = SecurityUtil.getSessionUser();
+        if (username != null) {
+            user = userService.findByUsername(username);
+            model.addAttribute("user", user);
+        }
+        model.addAttribute("user", user);
         model.addAttribute("events", events);
         return "events-list";
     }
 
     @GetMapping("/events/{eventId}")
     public String viewEvent(@PathVariable("eventId") Long eventId, Model model) {
+        UserEntity user = new UserEntity();
         EventDto eventDto = eventService.findByEventId(eventId);
+        String username = SecurityUtil.getSessionUser();
+        if (username != null) {
+            user = userService.findByUsername(username);
+            model.addAttribute("user", user);
+        }
+        model.addAttribute("recipe", eventDto);
+        model.addAttribute("user", user);
         model.addAttribute("event", eventDto);
         return "events-detail";
     }

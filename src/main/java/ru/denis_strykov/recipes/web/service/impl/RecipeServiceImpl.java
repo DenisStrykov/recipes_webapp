@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.denis_strykov.recipes.web.dto.RecipeDto;
 import ru.denis_strykov.recipes.web.models.Recipe;
+import ru.denis_strykov.recipes.web.models.UserEntity;
 import ru.denis_strykov.recipes.web.repository.RecipeRepository;
+import ru.denis_strykov.recipes.web.repository.UserRepository;
+import ru.denis_strykov.recipes.web.security.SecurityUtil;
 import ru.denis_strykov.recipes.web.service.RecipeService;
 
 import java.util.List;
@@ -18,10 +21,12 @@ public class RecipeServiceImpl implements RecipeService {
 
 
     private RecipeRepository recipeRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository, UserRepository userRepository) {
         this.recipeRepository = recipeRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -32,7 +37,10 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe saveRecipe(RecipeDto recipeDto) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
         Recipe recipe = mapToRecipe(recipeDto);
+        recipe.setCreatedBy(user);
         return recipeRepository.save(recipe);
     }
 
@@ -44,7 +52,10 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public void updateRecipe(RecipeDto recipeDto) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
         Recipe recipe = mapToRecipe(recipeDto);
+        recipe.setCreatedBy(user);
         recipeRepository.save(recipe);
     }
 

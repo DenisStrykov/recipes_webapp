@@ -29,7 +29,9 @@
                         <a th:text="${recipe.recipeTitle}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
                     <a class="btn btn-primary" th:href="@{/recipes/{recipeId}(recipeId=${recipe.id})}">Показать рецепт</a>
-                    <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}">Редактировать</a>
+                    <div th:if="${user.id} == ${recipe.createdBy.id}">
+                        <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}">Редактировать</a>
+                    </div>
                 </div>
             </div>
         </div>
