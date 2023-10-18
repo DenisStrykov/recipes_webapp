@@ -12,7 +12,6 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - database_data:/var/lib/postgresql/data
       - ./infrastructure/db/preloaded_db.sql:/docker-entrypoint-initdb.d/preloaded_db.sql
     restart: always
 
