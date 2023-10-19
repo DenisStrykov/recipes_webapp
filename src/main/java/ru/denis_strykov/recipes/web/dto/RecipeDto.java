@@ -1,12 +1,10 @@
 package ru.denis_strykov.recipes.web.dto;
 
-
-import javax.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
 import ru.denis_strykov.recipes.web.models.UserEntity;
 
-
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.List;
 

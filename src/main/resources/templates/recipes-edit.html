@@ -9,7 +9,8 @@
     <!-- Page Content-->
     <section layout:fragment="body" class="py-5">
         <div class="container">
-            <form class="row g-3" role="form" method="post" th:action="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}" th:object="${recipe}">
+            <form class="row g-3" role="form" method="post"
+                  th:action="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}" th:object="${recipe}">
                 <input type="hidden" th:field="*{id}">
                 <div class="col-md-6">
                     <label for="recipeTitle" class="form-label">Название</label>
@@ -34,7 +35,7 @@
                     <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
                 </div>
                 <div class="input-group mb-3">
-                    <span  class="input-group-text">Рецепт</span>
+                    <span class="input-group-text">Рецепт</span>
                     <textarea
                             type="text"
                             class="form-control"
@@ -42,7 +43,8 @@
                             name="recipeContent"
                             th:field="*{recipeContent}"
                             aria-label="Рецепт"></textarea>
-                    <p th:if="${#fields.hasErrors('recipeContent')}" class="text-danger" th:errors="*{recipeContent}"></p>
+                    <p th:if="${#fields.hasErrors('recipeContent')}" class="text-danger"
+                       th:errors="*{recipeContent}"></p>
                 </div>
 
                 <div class="col-12">
@@ -52,6 +54,5 @@
         </div>
     </section>
 </main>
-
 </body>
 </html>

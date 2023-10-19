@@ -5,7 +5,6 @@
     <title>Создать рецепт</title>
 </head>
 <body class="d-flex flex-column">
-
 <!-- Page Content-->
 <section layout:fragment="body">
     <header class="py-5 bg-light border-bottom mb-4">
@@ -19,7 +18,6 @@
     <!-- Page content-->
     <div class="container">
         <div class="row">
-            <!-- Blog entries-->
             <div class="col-lg-8">
                 <!-- Featured blog post-->
                 <div class="card mb-4">
@@ -31,7 +29,8 @@
                         <p class="card-text" th:text="${recipe.recipeContent}"></p>
                         <div th:if="${user.id} == ${recipe.createdBy.id}">
                             <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/delete(recipeId=${recipe.id})}">Удалить</a>
-                            <a class="btn btn-primary" th:href="@{/events/{recipeId}/new(recipeId=${recipe.id})}">Создать событие</a>
+                            <a class="btn btn-primary" th:href="@{/events/{recipeId}/new(recipeId=${recipe.id})}">Создать
+                                событие</a>
                         </div>
                     </div>
                 </div>
@@ -45,16 +44,13 @@
                             <div class="card-body">
                                 <div th:text="${event.date}" class="small text-muted"></div>
                                 <h2 th:text="${event.name}" class="card-title h4"></h2>
-                                <p th:text="${#strings.abbreviate(event.tradition,150)}"  class="card-text"></p>
+                                <p th:text="${#strings.abbreviate(event.tradition,150)}" class="card-text"></p>
                                 <a class="btn btn-primary" th:href="@{/events/{eventId}(eventId=${event.id})}">Подробнее
                                     →</a>
                             </div>
                         </div>
-                        <!-- Blog post-->
                     </div>
                 </div>
-                <!-- Pagination-->
-
             </div>
             <!-- Side widgets-->
             <div class="col-lg-4">
@@ -62,6 +58,5 @@
         </div>
     </div>
 </section>
-
 </body>
 </html>

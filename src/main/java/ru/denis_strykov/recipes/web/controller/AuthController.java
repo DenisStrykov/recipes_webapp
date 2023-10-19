@@ -1,7 +1,5 @@
 package ru.denis_strykov.recipes.web.controller;
 
-
-import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ru.denis_strykov.recipes.web.dto.RegistrationDto;
 import ru.denis_strykov.recipes.web.models.UserEntity;
 import ru.denis_strykov.recipes.web.service.UserService;
+
+import javax.validation.Valid;
 
 @Controller
 public class AuthController {
@@ -22,7 +22,7 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    public String loginPage(){
+    public String loginPage() {
         return "login";
     }
 
@@ -34,17 +34,17 @@ public class AuthController {
     }
 
     @PostMapping("/register/save")
-    public String register(@Valid @ModelAttribute("user")RegistrationDto user,
+    public String register(@Valid @ModelAttribute("user") RegistrationDto user,
                            BindingResult result, Model model) {
         UserEntity existingUserEmail = userService.findByEmail(user.getEmail());
-        if(existingUserEmail != null && existingUserEmail.getEmail() != null && !existingUserEmail.getEmail().isEmpty()) {
+        if (existingUserEmail != null && existingUserEmail.getEmail() != null && !existingUserEmail.getEmail().isEmpty()) {
             return "redirect:/register?fail";
         }
         UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
-        if(existingUserUsername != null && existingUserUsername.getUsername() != null && !existingUserUsername.getUsername().isEmpty()) {
+        if (existingUserUsername != null && existingUserUsername.getUsername() != null && !existingUserUsername.getUsername().isEmpty()) {
             return "redirect:/register?fail";
         }
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             model.addAttribute("user", user);
             return "register";
         }

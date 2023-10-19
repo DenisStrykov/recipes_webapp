@@ -1,7 +1,5 @@
 package ru.denis_strykov.recipes.web.controller;
 
-
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,15 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.w3c.dom.Node;
 import ru.denis_strykov.recipes.web.dto.EventDto;
-import ru.denis_strykov.recipes.web.dto.RecipeDto;
 import ru.denis_strykov.recipes.web.models.Event;
 import ru.denis_strykov.recipes.web.models.UserEntity;
 import ru.denis_strykov.recipes.web.security.SecurityUtil;
 import ru.denis_strykov.recipes.web.service.EventService;
 import ru.denis_strykov.recipes.web.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -78,7 +75,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{recipeId}")
-    public String createEvent(@PathVariable("recipeId") Long recipeId, @ModelAttribute("event")EventDto eventDto,
+    public String createEvent(@PathVariable("recipeId") Long recipeId, @ModelAttribute("event") EventDto eventDto,
                               BindingResult result,
                               Model model) {
         if (result.hasErrors()) {

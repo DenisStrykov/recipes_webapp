@@ -1,82 +1,3 @@
-<!--<html-->
-<!--        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
-<!--        layout:decorate="~{layout}">-->
-<!--<head>-->
-<!--    <title>Создать рецепт</title>-->
-<!--</head>-->
-<!--<body class="d-flex flex-column h-100">-->
-<!--<main class="flex-shrink-0">-->
-<!--    &lt;!&ndash; Page Content&ndash;&gt;-->
-<!--    <section layout:fragment="body" class="py-5">-->
-<!--        <div class="container">-->
-<!--            <form class="row g-3" role="form" method="post" th:action="@{/events/{recipeId}(recipeId=${recipeId})}" th:object="${event}">-->
-<!--                <div class="col-md-6">-->
-<!--                    <label for="name" class="form-label">Название</label>-->
-<!--                    <input-->
-<!--                            type="text"-->
-<!--                            class="form-control"-->
-<!--                            id="name"-->
-<!--                            name="name"-->
-<!--                            th:field="*{name}"-->
-<!--                            placeholder="Имя события">-->
-<!--                    &lt;!&ndash;                    <p th:if="${#fields.hasErrors('recipeTitle')}" class="text-danger" th:errors="*{recipeTitle}"></p>&ndash;&gt;-->
-<!--                </div>-->
-<!--                <div class="col-md-6">-->
-<!--                    <label for="photoUrl" class="form-label">URL фото</label>-->
-<!--                    <input-->
-<!--                            type="text"-->
-<!--                            class="form-control"-->
-<!--                            id="photoUrl"-->
-<!--                            name="photoUrl"-->
-<!--                            th:field="*{photoUrl}"-->
-<!--                            placeholder="URL фото">-->
-<!--                    &lt;!&ndash;                    <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>&ndash;&gt;-->
-<!--                </div>-->
-<!--                <div class="col-md-6">-->
-<!--                    <label for="location" class="form-label">Локация</label>-->
-<!--                    <input-->
-<!--                            type="text"-->
-<!--                            class="form-control"-->
-<!--                            id="location"-->
-<!--                            name="location"-->
-<!--                            th:field="*{location}"-->
-<!--                            placeholder="Локация">-->
-<!--                    &lt;!&ndash;                    <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>&ndash;&gt;-->
-<!--                </div>-->
-<!--                <div class="col-md-6">-->
-<!--                    <label for="tradition" class="form-label">Традиция</label>-->
-<!--                    <input-->
-<!--                            type="text"-->
-<!--                            class="form-control"-->
-<!--                            id="tradition"-->
-<!--                            name="tradition"-->
-<!--                            th:field="*{tradition}"-->
-<!--                            placeholder="Локация">-->
-<!--                    &lt;!&ndash;                    <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>&ndash;&gt;-->
-<!--                </div>-->
-<!--                <div class="col-md-6">-->
-<!--                    <label for="date" class="form-label">Дата</label>-->
-<!--                    <input-->
-<!--                            type="text"-->
-<!--                            class="form-control"-->
-<!--                            id="date"-->
-<!--                            name="date"-->
-<!--                            th:field="*{date}"-->
-<!--                            placeholder="Локация">-->
-<!--                    &lt;!&ndash;                    <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>&ndash;&gt;-->
-<!--                </div>-->
-
-<!--                <div class="col-12">-->
-<!--                    <button type="submit" class="btn btn-primary">Создать</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </section>-->
-<!--</main>-->
-
-<!--</body>-->
-<!--</html>-->
-
 <html
         xmlns:th="http://thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -88,7 +9,8 @@
 <main class="flex-shrink-0">
     <section layout:fragment="body" class="py-5">
         <div class="container">
-            <form role="form" method="post" th:action="@{/events/{eventId}/edit(eventId=${eventId})}" th:object="${event}">
+            <form role="form" method="post" th:action="@{/events/{eventId}/edit(eventId=${eventId})}"
+                  th:object="${event}">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name">Имя</label>

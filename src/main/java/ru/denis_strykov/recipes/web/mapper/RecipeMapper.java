@@ -22,7 +22,6 @@ public class RecipeMapper {
         return recipeDto;
     }
 
-
     public static RecipeDto mapToRecipeDto(Recipe recipe) {
         RecipeDto recipeDto = RecipeDto.builder()
                 .id(recipe.getId())

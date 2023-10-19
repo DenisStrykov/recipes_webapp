@@ -1,7 +1,5 @@
 package ru.denis_strykov.recipes.web.controller;
 
-
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +12,7 @@ import ru.denis_strykov.recipes.web.security.SecurityUtil;
 import ru.denis_strykov.recipes.web.service.RecipeService;
 import ru.denis_strykov.recipes.web.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
