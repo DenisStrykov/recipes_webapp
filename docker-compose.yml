@@ -4,7 +4,9 @@ services:
 
   postgres:
     container_name: postgres
-    image: postgres
+    build:
+      context: ./infrastructure/db
+      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "Passwd"
@@ -12,9 +14,8 @@ services:
     ports:
       - "5432:5432"
 #    volumes:
-#      - ./infrastructure/db/init.sh:/docker-entrypoint-initdb.d/init.sh
+#      - ./infrastructure/db/preloaded_db.sql:/docker-entrypoint-initdb.d/preloaded_db.sql
     restart: always
-
   web:
     container_name: webapp
     image: client:0.0.1
@@ -29,3 +30,5 @@ services:
       - SERVER_PORT= 8091
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres/recipessource
     restart: always
+volumes:
+    postgres:

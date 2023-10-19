@@ -6,6 +6,5 @@ RUN mvn -f /app/pom.xml clean package -Dmaven.test.skip=true
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=builder /app/target/*.jar /app/*.jar
-COPY ./infrastructure/db/init.sh /app/
 EXPOSE 8090
 ENTRYPOINT ["java", "-jar", "/app/*.jar"]
