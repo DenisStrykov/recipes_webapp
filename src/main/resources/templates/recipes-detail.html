@@ -27,7 +27,7 @@
                         <div class="small text-muted" th:text="${recipe.createdDateTime}"></div>
                         <h2 class="card-title">Про этот рецепт</h2>
                         <p class="card-text" th:text="${recipe.recipeContent}"></p>
-                        <div th:if="${user.id} == ${recipe.createdBy.id}">
+                        <div th:if="${user.id} == ${recipe.createdBy.id} OR ${user.id} == 1">
                             <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/delete(recipeId=${recipe.id})}">Удалить</a>
                             <a class="btn btn-primary" th:href="@{/events/{recipeId}/new(recipeId=${recipe.id})}">Создать
                                 событие</a>

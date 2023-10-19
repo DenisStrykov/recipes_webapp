@@ -31,9 +31,9 @@
                         <a th:text="${recipe.recipeTitle}"
                            class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
-                    <a class="btn btn-primary" th:href="@{/recipes/{recipeId}(recipeId=${recipe.id})}">Показать
+                    <a class="btn btn-primary mb-1" th:href="@{/recipes/{recipeId}(recipeId=${recipe.id})}">Показать
                         рецепт</a>
-                    <div th:if="${user.id} == ${recipe.createdBy.id}">
+                    <div th:if="${user.id} == ${recipe.createdBy.id} OR ${user.id} == 1">
                         <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}">Редактировать</a>
                     </div>
                 </div>

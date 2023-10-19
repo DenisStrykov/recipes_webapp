@@ -59,7 +59,7 @@
                                 placeholder="Email"
                                 th:field="*{email}">
                     </div>
-                    <p th:if="${#fields.hasErrors('email')}" class="text-danger"></p>
+                    <p th:if="${#fields.hasErrors('email')}" class="text-danger mb-3"></p>
                     <div class="form-group">
                         <label>Пароль</label>
                         <input
@@ -69,8 +69,8 @@
                                 th:field="*{password}">
                     </div>
                     <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
-                    <button th:href="@{/login}" type="submit" class="btn btn-black">Войти</button>
-                    <button th:href="@{/register}" type="submit" class="btn btn-secondary">Регистрация</button>
+                    <button th:href="@{/login}" type="submit" class="btn btn-black mr-5 mb-4">Войти</button>
+                    <button th:href="@{/register}" type="submit" class="btn btn-secondary mb-3">Регистрация</button>
                 </form>
             </div>
         </div>

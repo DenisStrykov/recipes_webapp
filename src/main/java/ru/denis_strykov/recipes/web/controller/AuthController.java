@@ -21,11 +21,20 @@ public class AuthController {
         this.userService = userService;
     }
 
+    /**
+     * Get method for view login page
+     * @return : login.html form
+     */
     @GetMapping("/login")
     public String loginPage() {
         return "login";
     }
 
+    /**
+     * Get method for view register page
+     * @param model : model to add user for registration
+     * @return : register.html form
+     */
     @GetMapping("/register")
     public String getRegisterForm(Model model) {
         RegistrationDto user = new RegistrationDto();
@@ -33,6 +42,13 @@ public class AuthController {
         return "register";
     }
 
+    /**
+     * Post method for save user & view register OR home page
+     * @param user : model to add user for registration
+     * @param result : variable Errors class for check err exists
+     * @param model : model to add user for registration
+     * @return : redirect to recipes.html if request success
+     */
     @PostMapping("/register/save")
     public String register(@Valid @ModelAttribute("user") RegistrationDto user,
                            BindingResult result, Model model) {
