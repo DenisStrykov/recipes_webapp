@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+
+
+  postgres:
+    container_name: postgres
+    build:
+      context: ./infrastructure/db
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Passwd"
+      POSTGRES_DB: "recipessource"
+    ports:
+      - "5432:5432"
+#    volumes:
+#      - ./infrastructure/db/preloaded_db.sql:/docker-entrypoint-initdb.d/preloaded_db.sql
+    restart: always
+  web:
+    container_name: webapp
+    image: client:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8091:8091"
+    depends_on:
+      - postgres
+    environment:
+      - SERVER_PORT= 8091
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres/recipessource
+    restart: always
+volumes:
+    postgres:
