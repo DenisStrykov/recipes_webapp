@@ -44,6 +44,8 @@ To stop the application, remove downloaded packages, and clean up docker, use th
 are in now:
 
 ```shell
+wget https://raw.githubusercontent.com/DenisStrykov/recipes_webapp/main/stop.sh
+chmod u+x start.sh
 sh stop.sh
 ```
 
