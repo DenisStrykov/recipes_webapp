@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd~;
+cd~
 mkdir app
 cd app/ || exit
 git clone https://github.com/DenisStrykov/recipes_webapp
