@@ -32,15 +32,13 @@ The following technologies were utilized in this project:
 Please use Ubuntu 22.04... to run the project, to avoid possible complications with file execution rights to prefill
 database tables
 
+Execute the following commands to start the test run:
+
 ```shell
-cd~
-mkdir app
-cd app/
-git clone https://github.com/DenisStrykov/recipes_webapp;
-cd recipes_webapp/
-docker compose up -d --build
-
-chmod u+x show_all.sh[start.sh](start.sh)
-
+wget https://raw.githubusercontent.com/DenisStrykov/recipes_webapp/main/start.sh
+chmod u+x start.sh
+sh start.sh
 ```
+
+
 
