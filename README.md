@@ -40,5 +40,10 @@ chmod u+x start.sh
 sh start.sh
 ```
 
+To stop the application, remove downloaded packages, and clean up docker, use the following command in the directory you
+are in now:
 
+```shell
+
+```
 
