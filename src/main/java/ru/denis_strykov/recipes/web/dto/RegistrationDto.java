@@ -1,8 +1,8 @@
 package ru.denis_strykov.recipes.web.dto;
 
+import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
-import lombok.Data;
 
 @Data
 public class RegistrationDto {

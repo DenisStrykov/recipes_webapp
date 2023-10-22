@@ -70,6 +70,4 @@ public class RecipeServiceImpl implements RecipeService {
         return recipes.stream().map(recipe -> mapToRecipeDto(recipe)).collect(Collectors.toList());
     }
 
-
-
 }

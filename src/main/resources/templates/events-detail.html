@@ -5,8 +5,6 @@
     <title>Традиция</title>
 </head>
 <body class="d-flex flex-column">
-
-<!-- Page Content-->
 <section layout:fragment="body">
     <header class="py-5 bg-light border-bottom mb-4">
         <div class="container">
@@ -16,12 +14,9 @@
             </div>
         </div>
     </header>
-    <!-- Page content-->
     <div class="container">
         <div class="row">
-            <!-- Blog entries-->
             <div class="col-lg-8">
-                <!-- Featured blog post-->
                 <div class="card mb-4">
                     <a href="#!"><img class="card-img-top" th:src="${event.photoUrl}"
                                       alt="..."/></a>
@@ -30,23 +25,16 @@
                         <div class="small text-muted" th:text="${event.location}"></div>
                         <div class="small text-muted" th:text="${event.date}"></div>
                         <p class="card-text" th:text="${event.tradition}"></p>
-                        <div th:if="${user.id} == ${event.recipe.createdBy.id}">
+                        <div th:if="${user.id} == ${event.recipe.createdBy.id} OR ${user.id} == 1">
                             <a class="btn btn-primary" th:href="@{/events/{eventId}/delete(eventId=${event.id})}">Удалить</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Side widgets-->
             <div class="col-lg-4">
-                <!-- Search widget-->
-
-                <!-- Categories widget-->
-
-                <!-- Side widget-->
             </div>
         </div>
     </div>
 </section>
-
 </body>
 </html>

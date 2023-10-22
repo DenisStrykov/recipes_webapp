@@ -1,6 +1,6 @@
 version: "3.9"
-services:
 
+services:
 
   postgres:
     container_name: postgres
@@ -13,9 +13,8 @@ services:
       POSTGRES_DB: "recipessource"
     ports:
       - "5432:5432"
-#    volumes:
-#      - ./infrastructure/db/preloaded_db.sql:/docker-entrypoint-initdb.d/preloaded_db.sql
     restart: always
+
   web:
     container_name: webapp
     image: client:0.0.1
@@ -31,4 +30,4 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres/recipessource
     restart: always
 volumes:
-    postgres:
+  postgres:

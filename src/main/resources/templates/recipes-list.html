@@ -11,7 +11,8 @@
     <section layout:fragment="body" class="py-5">
         <div class="container px-5 my-5">
             <div th:if="${param.success}" class="alert alert-success">
-                Регистрация прошла успешно!</div>
+                Регистрация прошла успешно!
+            </div>
             <div class="text-center mb-5">
                 <h1 class="fw-bolder">Мы говорим на языке хорошей еды</h1>
                 <p class="lead fw-normal text-muted mb-0">Приготовь шедевр самостоятельно</p>
@@ -19,17 +20,20 @@
             <div class="row gx-5">
                 <div>
                     <form th:action="@{/recipes/search}" class="form-inline my-2 my-lg-0 mb-3">
-                        <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Найти рецепт" aria-label="Найти">
+                        <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Найти рецепт"
+                               aria-label="Найти">
                     </form>
                 </div>
                 <div th:each="recipe :${recipes}" class="col-lg-6 mb-2">
                     <div class="position-relative mb-3">
                         <img class="img-fluid rounded-3 mb-3" th:src="${recipe.photoUrl}"
                              alt="..."/>
-                        <a th:text="${recipe.recipeTitle}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+                        <a th:text="${recipe.recipeTitle}"
+                           class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
-                    <a class="btn btn-primary" th:href="@{/recipes/{recipeId}(recipeId=${recipe.id})}">Показать рецепт</a>
-                    <div th:if="${user.id} == ${recipe.createdBy.id}">
+                    <a class="btn btn-primary mb-1" th:href="@{/recipes/{recipeId}(recipeId=${recipe.id})}">Показать
+                        рецепт</a>
+                    <div th:if="${user.id} == ${recipe.createdBy.id} OR ${user.id} == 1">
                         <a class="btn btn-primary" th:href="@{/recipes/{recipeId}/edit(recipeId=${recipe.id})}">Редактировать</a>
                     </div>
                 </div>
