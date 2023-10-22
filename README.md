@@ -44,6 +44,6 @@ To stop the application, remove downloaded packages, and clean up docker, use th
 are in now:
 
 ```shell
-
+sh stop.sh
 ```
 
