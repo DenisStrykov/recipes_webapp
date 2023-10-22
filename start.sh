@@ -2,7 +2,7 @@
 
 cd ~ || exit
 mkdir app4testing
-cd appapp4testing/ || exit
+cd app4testing/ || exit
 git clone https://github.com/DenisStrykov/recipes_webapp
 cd recipes_webapp/ || exit
 chmod u+x stop.sh
