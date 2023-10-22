@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd~
+cd ~ || exit
 mkdir app4testing
 cd appapp4testing/ || exit
 git clone https://github.com/DenisStrykov/recipes_webapp
